@@ -1,0 +1,25 @@
+{
+  "name": "kata-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b-douglas/javascript-kata.git"
+  },
+  "author": "Doug Robinson",
+  "license": "MIT",
+  "keywords": [],
+  "bin": {
+    "hello": "./bin/index.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3"
+  }
+}
