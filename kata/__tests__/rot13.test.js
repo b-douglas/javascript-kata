@@ -17,6 +17,5 @@ let Test = new TestClass()
 
 test("Testing all tests", () => {
     Test.assertEquals(rot13("test"), "grfg")
-
-    Test.assertEquals("Grfg", rot13("test"))
+    Test.assertEquals("Grfg", rot13("Test"))
 })

@@ -1,10 +1,19 @@
-function rot13(message) {
-    let ret = ""
-    for (let i = 0; i < message.length; i++) {
-        let char = message.charCodeAt(i)
-        let rot13 = char + 13
-        console.log(`${char} ${rot13}`)
+var alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXWZ"
+var cipher = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXWZABCDEFGHIJKLM"
 
-        ret += char
+function rot13(message) {
+
+  const encrypt = c => {
+    var i = alphabet.indexOf(c)
+    if (i < 0) {
+      // not in alphabet, return char
+      return c
     }
+
+    return cipher[i]
+  }
+
+  return message.split('').map(encrypt).join('')
 }
+
+module.exports = rot13
