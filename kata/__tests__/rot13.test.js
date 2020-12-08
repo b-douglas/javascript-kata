@@ -15,7 +15,9 @@ const rot13 = require('../rot13.js')
 
 let Test = new TestClass()
 
-test("Testing all tests", () => {
-    Test.assertEquals(rot13("test"), "grfg")
-    Test.assertEquals("Grfg", rot13("Test"))
+describe("Test function", () => {
+    test("Testing all tests", () => {
+        Test.assertEquals(rot13("test"), "grfg")
+        Test.assertEquals("Grfg", rot13("Test"))
+    })
 })

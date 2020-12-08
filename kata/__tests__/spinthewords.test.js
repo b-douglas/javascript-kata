@@ -15,6 +15,8 @@ const spinWords = require('../spinthewords.js')
 
 let Test = new TestClass()
 
-test("Testing all tests", () => {
-    Test.assertEquals(spinWords("Welcome"), 'emocleW')
+describe("Test function", () => {
+    test("Testing all tests", () => {
+        Test.assertEquals(spinWords("Welcome"), 'emocleW')
+    })
 })
