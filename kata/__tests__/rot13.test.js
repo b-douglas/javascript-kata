@@ -1,4 +1,5 @@
-'use strict'
+
+import Encrypt from "../rot13"
 
 class TestClass {
     assertEquals(x, y, str) {
@@ -11,7 +12,7 @@ class TestClass {
     }
 }
 
-const rot13 = require('../rot13.js')
+const rot13 = Encrypt.rot13
 
 let Test = new TestClass()
 

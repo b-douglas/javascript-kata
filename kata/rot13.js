@@ -1,7 +1,4 @@
-
-
-class Encrypt {
-
+export default class Encrypt {
   static get alphabet() {
     return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXWZ"
   }
@@ -10,8 +7,7 @@ class Encrypt {
   }
 
   static rot13(message) {
-
-    const encrypt = c => {
+    const encrypt = (c) => {
       var i = Encrypt.alphabet.indexOf(c)
       if (i < 0) {
         // not in alphabet, return char
@@ -21,9 +17,6 @@ class Encrypt {
       return Encrypt.cipher[i]
     }
 
-    return message.split('').map(encrypt).join('')
+    return message.split("").map(encrypt).join("")
   }
-
 }
-
-module.exports = Encrypt.rot13
