@@ -1,19 +1,29 @@
-var alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXWZ"
-var cipher = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXWZABCDEFGHIJKLM"
 
-function rot13(message) {
 
-  const encrypt = c => {
-    var i = alphabet.indexOf(c)
-    if (i < 0) {
-      // not in alphabet, return char
-      return c
-    }
+class Encrypt {
 
-    return cipher[i]
+  static get alphabet() {
+    return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXWZ"
+  }
+  static get cipher() {
+    return "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXWZABCDEFGHIJKLM"
   }
 
-  return message.split('').map(encrypt).join('')
+  static rot13(message) {
+
+    const encrypt = c => {
+      var i = Encrypt.alphabet.indexOf(c)
+      if (i < 0) {
+        // not in alphabet, return char
+        return c
+      }
+
+      return Encrypt.cipher[i]
+    }
+
+    return message.split('').map(encrypt).join('')
+  }
+
 }
 
-module.exports = rot13
+module.exports = Encrypt.rot13
