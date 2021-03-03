@@ -1,4 +1,4 @@
-import CatchCarMileage from "../catchcarmileage"
+"use strict"
 
 class TestClass {
   assertEquals(x, y) {
@@ -12,7 +12,7 @@ class TestClass {
   }
 }
 
-const isInteresting = CatchCarMileage.isInteresting
+const isInteresting = require("../catchcarmileage-v2.js")
 
 let Test = new TestClass()
 

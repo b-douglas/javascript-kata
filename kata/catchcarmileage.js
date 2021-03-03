@@ -32,16 +32,16 @@ export default class CatchCarMileage {
     for (let i = numLen; digit >= 0 && digit <= 9 && i >= 0; i--) {
       part = digit * 10 ** i
       num = num + part
-      if (digit === 1 && i > 0) {
+      if (digit === 0 && i > 0) {
         num = -1
         break
-      } else if (digit === 0) {
-        digit = 9
+        // } else if (digit === 0) {
+        //   digit = 9
       } else {
         digit--
       }
     }
-    CatchCarMileage.trace(`seqDec - ${firstDigit} ${numLen} ${num}`)
+    //CatchCarMileage.trace(`seqDec - ${firstDigit} ${numLen} ${num}`)
     return num
   }
 
@@ -61,14 +61,28 @@ export default class CatchCarMileage {
         digit = 0
       }
     }
-    CatchCarMileage.trace(`seqInc - ${firstDigit} ${numLen} ${num}`)
+    //CatchCarMileage.trace(`seqInc - ${firstDigit} ${numLen} ${num}`)
+    return num
+  }
+
+  static palindrome(numLen, number) {
+    const numStr = number.toString()
+    const firstIdx = Math.floor(numStr.length / 2)
+    const midPoint = numStr.length % 2 > 0 ? Math.floor(numStr.length / 2) : 0
+
+    const first = numStr.slice(0, firstIdx)
+    const middle = midPoint > 0 ? numStr[midPoint] : ""
+    const last = Array.from(first).reverse().join("")
+
+    const num = Number.parseInt(first + middle + last)
+    //CatchCarMileage.trace(`palindrome - ${num} = ${first} + ${middle} + ${last}`)
     return num
   }
 
   static isInteresting(number, awesomePhrases) {
     // Go to town!
 
-    CatchCarMileage.trace(`>CatchCarmMileage::isInteresting ${number} [${awesomePhrases.toString()}]`)
+    //CatchCarMileage.trace(`>CatchCarmMileage::isInteresting ${number} [${awesomePhrases.toString()}]`)
 
     const no = 0
     const almost = 1
@@ -77,10 +91,14 @@ export default class CatchCarMileage {
 
     let interesting = no
 
-    if (number <= 99 || number >= 1000000000) {
-      CatchCarMileage.trace(`<CatchCarmMileage::isInteresting ${interesting}`)
-      CatchCarMileage.traceout()
+    if (number <= 97 || number >= 1000000001) {
+      //CatchCarMileage.trace(`<CatchCarmMileage::isInteresting ${interesting}`)
+      //CatchCarMileage.traceout()
       return no
+    } else if (number >= 98 && number <= 99) {
+      //CatchCarMileage.trace(`<CatchCarmMileage::isInteresting ${almost}`)
+      //CatchCarMileage.traceout()
+      return almost
     }
 
     let sequentials = {
@@ -96,7 +114,7 @@ export default class CatchCarMileage {
     }
     const tenToThe = 10 ** numLen
 
-    CatchCarMileage.trace(`AL - ${number} ${firstDigit} ${numLen} ${tenToThe}`)
+    //CatchCarMileage.trace(`AL - ${number} ${firstDigit} ${numLen} ${tenToThe}`)
 
     // Add for Zeros
     numsToCheck.push(firstDigit * tenToThe)
@@ -113,25 +131,29 @@ export default class CatchCarMileage {
     numsToCheck.push(CatchCarMileage.seqDec(firstDigit, numLen))
 
     //    The digits are a palindrome: 1221 or 73837
-    // numsToCheck.push(CatchCarMileage.palindrome(firstDigit, numLen))
+    numsToCheck.push(CatchCarMileage.palindrome(numLen, number))
 
-    CatchCarMileage.trace(`numsToCheck[${numsToCheck.toString()}]`)
+    if (number < 998) {
+      numsToCheck.push(CatchCarMileage.palindrome(numLen, number + 10))
+    }
+
+    //CatchCarMileage.trace(`numsToCheck[${numsToCheck.toString()}]`)
 
     if (interesting != yes) {
       for (const n of numsToCheck) {
         if (n === number) {
           interesting = yes
-          CatchCarMileage.trace(`numsToCheck ${n} === ${number} ${interesting}`)
+          //CatchCarMileage.trace(`numsToCheck ${n} === ${number} ${interesting}`)
           break
         } else if (number >= n - 2 && number < n) {
           interesting = almost
-          CatchCarMileage.trace(`numsToCheck ${number} is almost ${n}  ${number >= n - 2} ${number < n}`)
+          //CatchCarMileage.trace(`numsToCheck ${number} is almost ${n}  ${number >= n - 2} ${number < n}`)
         }
       }
     }
 
-    CatchCarMileage.trace(`<CatchCarmMileage::isInteresting ${interesting}`)
-    CatchCarMileage.traceout()
+    //CatchCarMileage.trace(`<CatchCarmMileage::isInteresting ${interesting}`)
+    //CatchCarMileage.traceout()
     return interesting
   }
 }

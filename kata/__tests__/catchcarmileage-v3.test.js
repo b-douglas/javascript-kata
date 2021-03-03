@@ -1,4 +1,4 @@
-import CatchCarMileage from "../catchcarmileage"
+"use strict"
 
 class TestClass {
   assertEquals(x, y) {
@@ -12,11 +12,11 @@ class TestClass {
   }
 }
 
-const isInteresting = CatchCarMileage.isInteresting
+const isInteresting = require("../catchcarmileage-v3.js")
 
 let Test = new TestClass()
 
-const loop = 100000000
+const loop = 10000000
 console.log("Loop will go " + loop)
 
 describe("Basic inputs", function () {
@@ -47,7 +47,7 @@ describe("Basic inputs", function () {
 
     Test.assertEquals(isInteresting(12321, []), 2)
     Test.assertEquals(isInteresting(7887, []), 2)
-    Test.assertEquals(isInteresting(1000000000, []), 2)
+    Test.assertEquals(isInteresting(1000000000, []), 0)
     Test.assertEquals(isInteresting(1000000000 - 1, []), 2)
 
     Test.assertEquals(isInteresting(3210, []), 2)
