@@ -16,7 +16,7 @@ const isInteresting = require("../catchcarmileage-v2.js")
 
 let Test = new TestClass()
 
-const loop = 100000000
+const loop = 1000000
 console.log("Loop will go " + loop)
 
 describe("Basic inputs", function () {
