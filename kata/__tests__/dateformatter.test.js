@@ -1,28 +1,18 @@
-'use strict'
+"use strict"
 
-class TestClass {
-    assertEquals(x, y, str) {
-        try {
-            expect(x).toBe(y)
-        } catch (e) {
-            console.log(`Error! ${str} ${e}`)
-            throw e
-        }
-    }
+//const solution = require("../dateformatter.js")
+
+function check(actual, expected) {
+  return expect(actual).toBe(expected)
 }
 
-const incrementString = require('../stringincrementer.js')
-
-let Test = new TestClass()
 describe("Test function", () => {
-    test("Testing all tests", () => {
-        Test.assertEquals(incrementString("foobar000"), "foobar001")
-        Test.assertEquals(incrementString("foo"), "foo1")
-        Test.assertEquals(incrementString("foobar001"), "foobar002")
-        Test.assertEquals(incrementString("foobar99"), "foobar100")
-        Test.assertEquals(incrementString("foobar099"), "foobar100")
-        Test.assertEquals(incrementString("foobar0099"), "foobar0100")
-        Test.assertEquals(incrementString("1"), "2")
-        Test.assertEquals(incrementString(""), "1")
-    })
+  test("Testing all tests", () => {
+    //let starttime = new Date("2021-03-10T14:15:12Z")
+    let starttime = new Date()
+    let current = new Date(starttime)
+    current.setHours(current.getHours() + 1)
+
+    check(current - starttime, 60 * 60 * 1000)
+  })
 })
