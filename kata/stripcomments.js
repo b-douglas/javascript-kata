@@ -31,4 +31,7 @@ function solution2(input, markers) {
     .join("\n")
 }
 
-;(module.exports = solution), solution2
+module.exports = {
+  solution,
+  solution2,
+}
